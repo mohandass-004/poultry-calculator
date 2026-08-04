@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poultry Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="image/logo.png" alt="PoultryCalc Pro Logo">
+    </div>
+</header>
+
+<div class="menu">
+
+    <button onclick="showCalculator('fcr')">FCR</button>
+
+    <button onclick="showCalculator('cfcr')">CFCR</button>
+
+    <button onclick="showCalculator('cost')">Production Cost</button>
+    <div class="welcome-card" id="welcome">
+
+    <h2>Welcome to PoultryCalc Pro</h2>
+
+    <p>
+        Select a calculator to begin your poultry farm calculations.
+    </p>
+
+</div>
+
+</div>
+
+<!-- FCR Calculator -->
+<div class="card" id="fcr">
+
+    <h2>FCR Calculator</h2>
+
+    <label>Feed Consumed (kg)</label>
+
+    <input type="number" id="feed">
+
+    <label>Live Weight (kg)</label>
+
+    <input type="number" id="weight">
+
+    <button onclick="calculateFCR()">Calculate</button>
+    <button onclick="resetFCR()">Reset</button>
+
+    <h3 id="fcrResult"></h3>
+
+</div>
+
+<!-- CFCR Calculator -->
+<div class="card" id="cfcr" style="display:none;">
+
+    <h2>CFCR Calculator</h2>
+
+    <label>Average Weight</label>
+
+    <input type="number" id="avgWeight">
+
+    <label>FCR</label>
+
+    <input type="number" id="cfcrFcr">
+
+    <button onclick="calculateCFCR()">Calculate</button>
+
+    <h3 id="cfcrResult"></h3>
+
+</div>
+
+<!-- Production Cost -->
+<div class="card" id="cost" style="display:none;">
+
+    <h2>Production Cost Calculator</h2>
+
+    <label>Total Chicks</label>
+    <input type="number" id="chicks">
+
+    <label>Chick Price</label>
+    <input type="number" id="chickPrice" value="27">
+
+    <label>Feed Consumed (kg)</label>
+    <input type="number" id="feedKg">
+
+    <label>Feed Price</label>
+    <input type="number" id="feedPrice" value="45">
+
+    <label>Total Live Weight (kg)</label>
+    <input type="number" id="liveWeight">
+
+    <label>Medicine Cost</label>
+    <input type="number" id="medicine">
+
+    <button onclick="calculateCost()">Calculate</button>
+
+    <h3 id="costResult"></h3>
+
+</div>
+
+<footer>
+    <p>Version 1 © 2026 PoultryCalc Pro | Designed & Developed by Mohan Palani</p>
+</footer>
+
+<!-- Floating Calculator Button -->
+<button id="fab" onclick="toggleCalculator()">
+    🧮
+</button>
+
+<!-- Mini Calculator -->
+<div id="miniCalculator">
+
+    <div class="calc-header">
+        <h3>Calculator</h3>
+        <button onclick="toggleCalculator()">✖</button>
+    </div>
+
+    <input type="text" id="calcDisplay" readonly>
+
+    <div class="calc-grid">
+
+        <button onclick="press('7')">7</button>
+        <button onclick="press('8')">8</button>
+        <button onclick="press('9')">9</button>
+        <button onclick="press('/')">÷</button>
+
+        <button onclick="press('4')">4</button>
+        <button onclick="press('5')">5</button>
+        <button onclick="press('6')">6</button>
+        <button onclick="press('*')">×</button>
+
+        <button onclick="press('1')">1</button>
+        <button onclick="press('2')">2</button>
+        <button onclick="press('3')">3</button>
+        <button onclick="press('-')">−</button>
+
+        <button onclick="press('0')">0</button>
+        <button onclick="press('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="press('+')">+</button>
+
+        <button onclick="clearCalc()" class="clear">Clear</button>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,402 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background:#f3f8f3;
+}
+
+header{
+    background:linear-gradient(135deg,#2E7D32,#43A047);
+    color:white;
+    padding:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
+}
+
+.menu{
+    text-align:center;
+    margin:20px;
+}
+
+.menu button{
+
+    background:white;
+
+    color:#2E7D32;
+
+    border:none;
+
+    padding:14px 28px;
+
+    margin:8px;
+
+    border-radius:30px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.menu button:hover{
+
+    background:#2E7D32;
+
+    color:white;
+
+    transform:translateY(-3px);
+
+}
+.card{
+
+    width:90%;
+
+    max-width:500px;
+
+    margin:30px auto;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+
+    animation:fade .4s;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+}
+
+input{
+
+width:100%;
+
+padding:12px;
+
+margin-top:6px;
+
+margin-bottom:15px;
+
+border:2px solid #ddd;
+
+border-radius:10px;
+
+font-size:16px;
+
+transition:.3s;
+
+}
+
+input:focus{
+
+border-color:#43A047;
+
+outline:none;
+
+box-shadow:0 0 8px rgba(67,160,71,.3);
+
+}
+
+.card button{
+    width:100%;
+    margin-top:20px;
+    background:#43a047;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+h3{
+
+margin-top:20px;
+
+background:#E8F5E9;
+
+padding:15px;
+
+border-radius:10px;
+
+color:#1B5E20;
+
+text-align:center;
+
+}
+header{
+    background:linear-gradient(135deg,#2E7D32,#43A047);
+    color:white;
+    padding:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.2);
+}
+
+.logo-container{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+}
+
+.logo-container img{
+    width:100%;
+    max-width:420px;
+    height:auto;
+    object-fit:contain;
+    border-radius:12px;
+    background:white;
+    padding:8px;
+}
+
+.logo-container h1{
+    margin:0;
+    font-size:30px;
+}
+
+.logo-container p{
+    margin:0;
+    font-size:15px;
+}
+.welcome-card{
+    width:90%;
+    max-width:700px;
+    margin:20px auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.welcome-card h2{
+    color:#2e7d32;
+}
+
+.welcome-card p{
+    color:#555;
+    margin-top:10px;
+}
+footer{
+    text-align:center;
+    padding:18px 10px;
+    color:#555;
+    font-size:14px;
+    background:#f1f8f1;
+    margin-top:30px;
+}
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+#fab{
+
+position:fixed;
+
+right:25px;
+
+bottom:25px;
+
+width:65px;
+
+height:65px;
+
+border:none;
+
+border-radius:50%;
+
+background:#2E7D32;
+
+color:white;
+
+font-size:28px;
+
+cursor:pointer;
+
+box-shadow:0 5px 15px rgba(0,0,0,.3);
+
+z-index:1000;
+
+}
+
+#miniCalculator{
+
+display:none;
+
+position:fixed;
+
+right:25px;
+
+bottom:100px;
+
+background:white;
+
+padding:15px;
+
+border-radius:15px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+width:280px;
+
+z-index:1000;
+
+}
+
+.calc-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:10px;
+
+}
+
+#calcDisplay{
+
+width:100%;
+
+padding:10px;
+
+font-size:22px;
+
+text-align:right;
+
+margin-bottom:10px;
+
+}
+
+.calc-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:8px;
+
+}
+
+.calc-grid button{
+
+padding:15px;
+
+font-size:18px;
+
+cursor:pointer;
+
+}
+
+.clear{
+
+grid-column:span 4;
+
+background:#d32f2f;
+
+color:white;
+
+}
+/* Responsive: Mobile support */
+@media (max-width: 600px) {
+
+    .logo-container{
+        flex-direction:column;
+        gap:8px;
+        padding:8px;
+    }
+
+    .logo-container img{
+        max-width:200px;
+        width:70%;
+    }
+
+    .logo-container h1{
+        font-size:20px;
+        text-align:center;
+    }
+
+    .menu{
+        margin:12px;
+    }
+
+    .menu button{
+        display:block;
+        width:100%;
+        margin:8px 0;
+        padding:12px;
+        border-radius:12px;
+        font-size:16px;
+    }
+
+    .card, .welcome-card{
+        width:95%;
+        max-width:unset;
+        margin:16px auto;
+        padding:18px;
+    }
+
+    input{
+        font-size:16px;
+        padding:10px;
+    }
+
+    h3{
+        font-size:16px;
+        padding:12px;
+    }
+
+    #fab{
+        width:56px;
+        height:56px;
+        right:16px;
+        bottom:16px;
+        font-size:22px;
+    }
+
+    #miniCalculator{
+        right:16px;
+        bottom:88px;
+        width:260px;
+    }
+
+    .calc-grid{
+        gap:6px;
+    }
+
+    .calc-grid button{
+        padding:12px;
+        font-size:16px;
+    }
+
+}
+
+@media (max-width: 360px) {
+    .logo-container img{ max-width:160px; width:65%; }
+    .menu button{ padding:10px; font-size:15px; }
+    #miniCalculator{ width:240px; }
+}

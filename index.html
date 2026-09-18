@@ -145,8 +145,17 @@
         <button onclick="calculate()">=</button>
         <button onclick="press('+')">+</button>
 
+        <button onclick="deleteLast()" class="delete">Del</button>
         <button onclick="clearCalc()" class="clear">Clear</button>
 
+    </div>
+
+    <div id="calcHistory">
+        <div class="history-header">
+            <h4>History</h4>
+            <button onclick="clearHistory()" class="history-clear">Clear</button>
+        </div>
+        <ul id="historyList"></ul>
     </div>
 
 </div>

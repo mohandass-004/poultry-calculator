@@ -88,32 +88,65 @@ calc.style.display="block";
 
 }
 
+let calcHistory = [];
+
 function press(value){
+    document.getElementById("calcDisplay").value += value;
+}
 
-document.getElementById("calcDisplay").value+=value;
-
+function deleteLast(){
+    const display = document.getElementById("calcDisplay");
+    display.value = display.value.slice(0, -1);
 }
 
 function clearCalc(){
-
-document.getElementById("calcDisplay").value="";
-
+    document.getElementById("calcDisplay").value = "";
 }
 
 function calculate(){
+    const display = document.getElementById("calcDisplay");
+    const expression = display.value;
 
-let display=document.getElementById("calcDisplay");
+    if (!expression) {
+        return;
+    }
 
-try{
-
-display.value=eval(display.value);
-
+    try {
+        const result = eval(expression);
+        display.value = result;
+        addHistory(expression, result);
+    } catch {
+        display.value = "Error";
+    }
 }
 
-catch{
-
-display.value="Error";
-
+function addHistory(expression, result) {
+    calcHistory.unshift({ expression, result });
+    if (calcHistory.length > 10) {
+        calcHistory.pop();
+    }
+    renderHistory();
 }
 
+function renderHistory() {
+    const historyList = document.getElementById("historyList");
+    historyList.innerHTML = "";
+
+    if (calcHistory.length === 0) {
+        historyList.innerHTML = "<li class='empty'>No history yet.</li>";
+        return;
+    }
+
+    calcHistory.forEach(entry => {
+        const item = document.createElement("li");
+        item.innerHTML = `<span class="expr">${entry.expression}</span><span class="result">= ${entry.result}</span>`;
+        historyList.appendChild(item);
+    });
 }
+
+function clearHistory() {
+    calcHistory = [];
+    renderHistory();
+}
+
+renderHistory();

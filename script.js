@@ -133,16 +133,21 @@ window.addEventListener("mouseup", function() {
 let calcHistory = [];
 
 function press(value){
-    document.getElementById("calcDisplay").value += value;
+    const display = document.getElementById("calcDisplay");
+    display.value += value;
+    display.focus();
 }
 
 function deleteLast(){
     const display = document.getElementById("calcDisplay");
     display.value = display.value.slice(0, -1);
+    display.focus();
 }
 
 function clearCalc(){
-    document.getElementById("calcDisplay").value = "";
+    const display = document.getElementById("calcDisplay");
+    display.value = "";
+    display.focus();
 }
 
 function calculate(){
@@ -160,7 +165,55 @@ function calculate(){
     } catch {
         display.value = "Error";
     }
+    display.focus();
 }
+
+function handleCalculatorKeyboard(event) {
+    const display = document.getElementById("calcDisplay");
+    if (!display) return;
+
+    const isTypingInOtherInput = document.activeElement &&
+        document.activeElement !== display &&
+        ["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement.tagName);
+
+    if (isTypingInOtherInput && !event.ctrlKey && !event.metaKey && !event.altKey) {
+        return;
+    }
+
+    const key = event.key;
+
+    if (/^[0-9]$/.test(key)) {
+        event.preventDefault();
+        press(key);
+        return;
+    }
+
+    if (["+", "-", ".", "/", "%", "(", ")"].includes(key) || key === "*" || key === "x" || key === "X" || key === "Multiply" || key === "Divide") {
+        event.preventDefault();
+        const mappedValue = key === "x" || key === "X" || key === "Multiply" ? "*" : key === "Divide" ? "/" : key;
+        press(mappedValue);
+        return;
+    }
+
+    if (key === "Enter" || key === "=") {
+        event.preventDefault();
+        calculate();
+        return;
+    }
+
+    if (key === "Backspace" || key === "Delete") {
+        event.preventDefault();
+        deleteLast();
+        return;
+    }
+
+    if (key === "Escape") {
+        event.preventDefault();
+        clearCalc();
+    }
+}
+
+document.addEventListener("keydown", handleCalculatorKeyboard);
 
 function addHistory(expression, result) {
     calcHistory.unshift({ expression, result });

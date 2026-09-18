@@ -83,10 +83,52 @@ calc.style.display="none";
 else{
 
 calc.style.display="block";
+calc.style.left = "";
+calc.style.top = "";
+calc.style.right = "25px";
+calc.style.bottom = "100px";
 
 }
 
 }
+
+const miniCalculator = document.getElementById("miniCalculator");
+const calcHeader = document.querySelector(".calc-header");
+
+let dragState = null;
+
+if (calcHeader) {
+    calcHeader.addEventListener("mousedown", function(event) {
+        if (event.target.closest("button")) return;
+
+        const rect = miniCalculator.getBoundingClientRect();
+        dragState = {
+            startX: event.clientX,
+            startY: event.clientY,
+            originLeft: rect.left,
+            originTop: rect.top
+        };
+
+        miniCalculator.classList.add("dragging");
+    });
+}
+
+window.addEventListener("mousemove", function(event) {
+    if (!dragState) return;
+
+    const deltaX = event.clientX - dragState.startX;
+    const deltaY = event.clientY - dragState.startY;
+
+    miniCalculator.style.left = `${dragState.originLeft + deltaX}px`;
+    miniCalculator.style.top = `${dragState.originTop + deltaY}px`;
+    miniCalculator.style.right = "auto";
+    miniCalculator.style.bottom = "auto";
+});
+
+window.addEventListener("mouseup", function() {
+    dragState = null;
+    miniCalculator.classList.remove("dragging");
+});
 
 let calcHistory = [];
 

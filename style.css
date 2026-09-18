@@ -264,6 +264,8 @@ width:280px;
 
 z-index:1000;
 
+user-select:none;
+
 }
 
 .calc-header{
@@ -276,6 +278,16 @@ align-items:center;
 
 margin-bottom:10px;
 
+cursor:grab;
+
+user-select:none;
+
+touch-action:none;
+
+}
+
+.calc-header:active{
+    cursor:grabbing;
 }
 
 #calcDisplay{
